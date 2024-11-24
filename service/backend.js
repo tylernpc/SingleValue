@@ -25,3 +25,50 @@ app.post("/api/users", (req, res) => {
   res.send(user);
 });
 
+// read operation
+app.get("/api/users/:userId", (req, res) => {
+  const user = users.find((u) => u.userId === parseInt(req.params.user));
+
+  if (!user) {
+    res.status(404).send("Error, there was no user found!");
+  } else {
+    res.status(400).send(error.details[0].message);
+  }
+});
+
+app.get("/api/users", (req, res) => {
+  res.send(jobs);
+});
+
+// update operation
+app.put("api/users/:userId", (req, res) => {
+  const user = users.find((u) => u.userId === parseInt(req.params.user));
+
+  if (!user) {
+    res.status(404).send("Error, there was no user found!");
+  } else {
+    res.status(400).send(error.details[0].message);
+  }
+
+  user.userId = req.body.userId;
+  user.username = req.body.username;
+  user.password = req.body.password;
+
+  res.send(user);
+});
+
+function userSearch(req, res) {
+  const user = users.find((u) => u.userId === parseInt(req.params.user));
+
+  if (!user) {
+    res.status(404).send("Error, there was no user found!");
+  } else {
+    res.status(400).send(error.details[0].message);
+  }
+
+  user.userId = req.body.userId;
+  user.username = req.body.username;
+  user.password = req.body.password;
+
+  res.send(user);
+}
