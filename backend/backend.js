@@ -37,7 +37,7 @@ app.get("/api/users/:user", (req, res) => {
 });
 
 app.get("/api/users", (req, res) => {
-  res.send(jobs);
+  res.send(users);
 });
 
 // update operation
